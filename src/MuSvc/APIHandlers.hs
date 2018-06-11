@@ -8,12 +8,5 @@ import           Lib.Prelude
 
 import           MuSvc.Types
 
-muAPI :: S.ScottyT LText MuSvcM ()
-muAPI = do
-    S.get "/api/v1/status" $ do S.json $ object [ "message" .= A.String "hello" ]
-    -- other API routes will be declared below
-
-muServer :: Int -> MuEnv -> MuSvcM ()
-muServer port env = do
-    let runIO m = runReaderT (unMuSvcM m) env
-    S.scottyT port runIO muAPI
+statusHandler :: S.ActionT LText MuSvcM ()
+statusHandler = S.json $ object [ "message" .= A.String "hello-world" ]

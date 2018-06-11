@@ -18,7 +18,9 @@ library
   ghc-options:         -Wall
   exposed-modules:     Lib.Prelude
                      , MuSvc.Types
+                     , MuSvc.APIHandlers
   build-depends:       base >= 4.7 && < 5
+                     , aeson
                      , protolude >= 0.2.2
                      , scotty
                      , unliftio
@@ -30,7 +32,6 @@ executable musvc
   main-is:             Main.hs
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N -optl-static -optl-pthread
   build-depends:       base
-                     , aeson
                      , musvc
                      , protolude >= 0.2.2
                      , scotty
